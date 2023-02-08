@@ -1,0 +1,1 @@
+JMH S 25 org.example.vola.TLABTest S 53 org.example.vola.jmh_generated.TLABTest_share_jmhTest S 5 share S 11 AverageTime E A 2 1 1 1 1 L 2 5 testA 5 testB E E E E E E E E E E E E E U 11 NANOSECONDS E E 
