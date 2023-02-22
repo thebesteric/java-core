@@ -115,6 +115,8 @@ public class ThreadGroupDemo {
             System.out.println(Thread.currentThread().getName() + " run...");
         }, "thread-6").start();
 
+
+        // 遍历当前所有活动线程
         ThreadGroup mainThreadGroup = Thread.currentThread().getThreadGroup();
         Thread[] threads = new Thread[mainThreadGroup.activeCount()];
         int enumerate = mainThreadGroup.enumerate(threads, recurse);
