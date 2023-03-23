@@ -12,6 +12,12 @@ public class AtomicReferenceInnerAttrTest {
 
     private static AtomicReference<Account> atomicReference = new AtomicReference<>();
 
+    // 自定义的
+    private static AtomicReferenceFieldUpdater<Account> updater = new AtomicReferenceFieldUpdater<>(Account.class, "money");
+
+    // JUC 提供
+    // private static AtomicIntegerFieldUpdater<Account> updater = AtomicIntegerFieldUpdater.newUpdater(Account.class, "money");
+
     public static void main(String[] args) throws InterruptedException {
         Account account = new Account(0);
         atomicReference.set(account);
@@ -47,13 +53,12 @@ public class AtomicReferenceInnerAttrTest {
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
-        AtomicReferenceFieldUpdater<Account> updater = new AtomicReferenceFieldUpdater<>(Account.class, "money");
         updater.addAndGet(account, money);
     }
 
     @Data
-    static class Account {
-        private int money;
+    public static class Account {
+        private volatile int money;
         // private AtomicInteger money;
 
         public Account(int money) {
